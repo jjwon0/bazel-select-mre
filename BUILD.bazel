@@ -1,0 +1,49 @@
+load("@bazel_skylib//lib:selects.bzl", "selects")
+load("@bazel_skylib//rules:common_settings.bzl", "bool_flag")
+
+platform(
+    name = "linux_x86",
+    constraint_values = [
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_32",
+    ],
+)
+
+platform(
+    name = "linux_x64",
+    constraint_values = [
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
+    ],
+)
+
+config_setting(
+    name = "linux",
+    constraint_values = [
+        "@platforms//os:linux",
+    ],
+)
+
+selects.config_setting_group(
+    name = "foo",
+    match_all = [
+        ":linux",
+        ":_foo",
+    ],
+)
+
+config_setting(
+    name = "_foo",
+    define_values = {
+        "foo": "1"
+    }
+)
+
+sh_binary(
+    name = "test",
+    srcs = ["test.sh"],
+    args = select({
+        ":foo": ["foo"],
+        ":linux": ["linux"]
+    }),
+)
