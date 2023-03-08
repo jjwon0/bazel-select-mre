@@ -28,3 +28,12 @@ INFO: Build completed successfully, 1 total action
 INFO: Running command line: bazel-bin/test linux
 linux
 ```
+
+```
+~/selectsrepro$ bazel version
+Build label: 6.1.0
+Build target: bazel-out/k8-opt/bin/src/main/java/com/google/devtools/build/lib/bazel/BazelServer_deploy.jar
+Build time: Mon Mar 6 17:09:47 2023 (1678122587)
+Build timestamp: 1678122587
+Build timestamp as int: 1678122587
+```
