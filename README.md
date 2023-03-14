@@ -1,4 +1,4 @@
-Bazel seems to do weird things when it comes to comparing `config_setting_group` and `config_setting` in terms of refinement. It seems to rely on the array ordering of the `matches_all` field.
+Bazel seems to do weird things when it comes to comparing `config_setting_group` and `config_setting` in terms of refinement. It seems to rely on the array ordering of the `match_all` field.
 
 ```
 ~/selectsrepro$ bazel run test --define=foo=1 --define=bar=1 --define=lnx=1
